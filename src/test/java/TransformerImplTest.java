@@ -1,12 +1,15 @@
 import org.junit.*;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 
 public class TransformerImplTest {
-    TransformerInterface megatron;
+   private TransformerInterface megatron;
 
     @Before
     public void setUp() throws Exception {
-        megatron = new TransformerInterfaceImpl();
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        megatron = (TransformerInterface)ctx.getBean("transformer");
 
     }
 
